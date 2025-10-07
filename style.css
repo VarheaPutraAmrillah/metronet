@@ -1,0 +1,170 @@
+    :root{
+      --bg: #f5f8ff;
+      --card: #ffffff;
+      --primary: #2b7ed6;   /* main blue */
+      --primary-2: #6fb3ff; /* lighter */
+      --muted: #6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(41,56,90,0.06);
+      --container: 1100px;
+      --max-width: 1200px;
+    }
+
+    /* Basic reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #eef5ff 60%);
+      color: #0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      scroll-behavior: smooth;
+    }
+
+    .wrap{max-width:var(--container);margin:0 auto;padding:28px;}
+
+    /* HERO */
+    .hero{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      justify-content:space-between;
+      padding:40px;
+      background: linear-gradient(135deg, rgba(107,179,255,0.12), rgba(43,126,214,0.06));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom:28px;
+      overflow:hidden;
+    }
+
+    .hero-left{flex:1;min-width:260px}
+    .logo{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+    .logo .mark{
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:800;
+      box-shadow:0 6px 18px rgba(43,126,214,0.2);
+    }
+
+    h1{font-size:28px;margin:14px 0 6px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    /* Buttons group */
+    .cta-group{display:flex;gap:12px;flex-wrap:wrap}
+    .cta{
+      background:linear-gradient(180deg,white, #f8fbff);
+      border:1px solid rgba(43,126,214,0.08);
+      padding:12px 18px;border-radius:10px;font-weight:600;cursor:pointer;
+      box-shadow: 0 6px 16px rgba(51,84,138,0.04);
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      display:inline-flex;align-items:center;gap:10px;
+    }
+    .cta:hover{transform:translateY(-4px)}
+    .cta.active{
+      background: linear-gradient(90deg,var(--primary),var(--primary-2));
+      color: #fff;
+      border: none;
+      box-shadow: 0 10px 30px rgba(43,126,214,0.18);
+    }
+
+    .hero-right{
+      width:420px;height:220px;border-radius:12px;background:linear-gradient(180deg,#ffffff, #f1f9ff);
+      display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .hero-right img{width:100%;height:100%;object-fit:cover;opacity:0.95}
+
+    /* Sections */
+    section{margin:40px 0;padding:22px;border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+    section h2{margin-top:0}
+    .section-row{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+
+    /* cards for games/tools */
+    .game-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .game-card{
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(9, 30, 66, 0.03);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all .4s ease;
+
+    }
+    .game-card.reveal-visible{opacity:1;transform:none}
+    .game-card img{
+      width:250px;height:150px;border-radius:8px;object-fit:cover;flex-shrink:0;border:1px solid rgba(15,23,42,0.04)
+    }
+    .game-info h3{margin:0 0 6px;font-size:16px}
+    .game-info p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
+
+    /* steps area */
+    .steps{
+      margin-top:12px;border-top:1px dashed rgba(15,23,42,0.04);padding-top:12px;
+    }
+    .step{
+      display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;
+      opacity:0; transform:translateX(-12px); transition:opacity .28s ease, transform .28s ease;
+    }
+    .step.reveal-visible{opacity:1; transform:none}
+    .step .thumb{
+      width:120px;height:70px;border-radius:8px;overflow:hidden;border:1px solid rgba(15,23,42,0.04);
+      flex-shrink:0;background:linear-gradient(180deg,#eef7ff,#ffffff);display:flex;align-items:center;justify-content:center;
+    }
+    .step .thumb img{width:100%;height:100%;object-fit:cover}
+    .step p{margin:0;color:var(--muted);font-size:14px}
+
+    /* tools section - list style */
+    .tools-list{display:flex;flex-direction:column;gap:10px}
+    .tool-step{
+      background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(43,126,214,0.06);
+      display:flex;gap:12px;align-items:center;opacity:0; transform:translateY(10px);transition:all .25s ease;
+    }
+    .tool-step.reveal-visible{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .wrap{padding:18px}
+      .hero{flex-direction:column;align-items:flex-start}
+      .hero-right{width:100%;height:180px}
+      .game-card{width:100%}
+    }
+
+    /* small utility */
+    .muted{color:var(--muted);font-size:14px}
+    .center{text-align:center}
+    .section-header{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;
+    }
+
+    /* Fade in/out for modals or dynamic content (example usage) */
+    .fade-enter{opacity:0;transform:scale(.98)}
+    .fade-enter.fade-enter-active{opacity:1;transform:none;transition:all .28s ease}
+    .fade-leave{opacity:1}
+    .fade-leave.fade-leave-active{opacity:0;transition:opacity .2s ease}
+
+    /* anchor offset so section header not hidden under fixed nav (if any) */
+    :target::before{
+      content:"";
+      display:block;
+      height:18px;
+      margin-top:-18px;
+      visibility:hidden;
+    }
+
+    /* small nav at top right (optional) */
+    .top-actions{display:flex;gap:10px;align-items:center}
+    .small-btn{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(15,23,42,0.06);font-size:14px}
